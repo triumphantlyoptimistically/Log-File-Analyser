@@ -1,3 +1,5 @@
+import os
+
 def Print_Title():
     print("=" * 30)
     print("Log File Analyser")
@@ -28,9 +30,28 @@ def Get_Option(min_option, max_option):
 
         return option
 
+def Load_Log_File():
+    fileFound = False
+    while not fileFound:
+        path = input("\nEnter file path: ")
+        if not path:
+            print("Path connot be empty")
+        elif not os.path.isfile(path):
+            print("File not found")
+        else:
+            print("File loaded")
+            fileFound = True
+
 running = True
 while running:
     Print_Title()
     Display_Menu()
-    if Get_Option(1, 4) == 4:
+    option = Get_Option(1, 4)
+    if option == 1:
+        Load_Log_File()
+    elif option == 2:
+        print("Feature not yet implemented")
+    elif option == 3:
+        print("Feature not yet implemented")
+    else:
         running = False
