@@ -88,12 +88,17 @@ def Display_Entry_Data(data):
 
 running = True
 while running:
+    loaded = False
     Print_Title()
     Display_Menu()
     option = Get_Option(1, 3)
     if option == 1:
         path = Load_Log_File()
+        loaded = True
     elif option == 2:
+        if loaded == False:
+            print("No file loaded\n")
+            continue
         entryData = Read_Log_File(path)
         Display_Entry_Data(entryData)
     else:
